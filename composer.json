@@ -22,5 +22,10 @@
     "require": {
         "akeneo/pim-community-dev": "~1.7.5",
         "akeneo-labs/custom-entity-bundle": "~1.10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kiboko\\Bundle\\EnrichBundle\\": ""
+        }
     }
 }
