@@ -1,0 +1,3 @@
+imports:
+    - { resource: '@KibokoEnrichBundle/Resources/config/bundles/twig.yml' }
+

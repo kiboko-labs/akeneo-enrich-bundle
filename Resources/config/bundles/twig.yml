@@ -1,0 +1,4 @@
+twig:
+    form:
+        resources:
+            - 'KibokoEnrichBundle:Form:pim-fields.html.twig'

@@ -1,0 +1,26 @@
+{
+    "name": "kiboko/akeneo-enrich-bundle",
+    "type": "symfony-bundle",
+    "authors": [
+        {
+            "name": "Grégory Planchat",
+            "email": "gregory@kiboko.fr"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/akeneo/pim-community-dev.git",
+            "branch": "master"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/akeneo-labs/CustomEntityBundle.git",
+            "branch": "master"
+        }
+    ],
+    "require": {
+        "akeneo/pim-community-dev": "~1.7.5",
+        "akeneo-labs/custom-entity-bundle": "~1.10.0"
+    }
+}

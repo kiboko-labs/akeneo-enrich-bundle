@@ -1,0 +1,12 @@
+parameters:
+  kiboko_enrich.form.type.translatable_field.class: Kiboko\Bundle\EnrichBundle\Form\Type\TranslatableFieldType
+
+services:
+  kiboko_enrich.form.type.translatable_field:
+    class: '%kiboko_enrich.form.type.translatable_field.class%'
+    arguments:
+      - '@validator'
+      - '@pim_user.context.user'
+      - '@pim_catalog.helper.locale'
+    tags:
+      - { name: form.type, alias: kiboko_translatable_field }
