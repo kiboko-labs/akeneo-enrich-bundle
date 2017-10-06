@@ -1,0 +1,11 @@
+parameters:
+    kiboko_enrich.view_element.translatable.tab.images.template:  'ArcPictogramBundle:Pictogram:Tab/images.html.twig'
+
+services:
+    kiboko_enrich.view_element.translatable.tab.images:
+        parent: pim_enrich.view_element.base
+        arguments:
+            - 'kiboko_enrich.translatable.tab.images'
+            - '%kiboko_enrich.view_element.translatable.tab.images.template%'
+        tags:
+            - { name: pim_enrich.view_element, type: pim_enrich_group_form.form_tab, position: 100 }

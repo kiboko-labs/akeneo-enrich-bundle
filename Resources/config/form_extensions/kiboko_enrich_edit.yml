@@ -1,0 +1,44 @@
+extensions:
+    kiboko-tranlatable-edit:
+        module: pim/form/common/edit-form
+
+    kiboko-tranlatable-edit-cache-invalidator:
+        module: pim/cache-invalidator
+        parent: kiboko-tranlatable-edit
+        position: 1000
+
+    kiboko-tranlatable-edit-tabs:
+        module: pim/form/common/form-tabs
+        parent: kiboko-tranlatable-edit
+        targetZone: content
+        position: 100
+
+    kiboko-tranlatable-edit-properties:
+        module: pim/common/tab/properties
+        parent: kiboko-tranlatable-edit-tabs
+        targetZone: container
+        position: 100
+        config:
+            tabTitle: kiboko_enrich.form.product.tab.properties.title
+            tabCode: pim-job-instance-properties
+
+    kiboko-tranlatable-edit-properties-code:
+        module: pim/job/common/edit/field/text
+        parent: kiboko-tranlatable-edit-properties
+        position: 100
+        targetZone: properties
+        config:
+            fieldCode: code
+            label: kiboko_enrich.form.field.code.label
+            readOnly: true
+
+    kiboko-tranlatable-edit-properties-label:
+        module: pim/form/common/label
+        parent: kiboko-tranlatable-edit-properties
+        position: 110
+        targetZone: properties
+        config:
+            fieldCode: label
+            label: kiboko_enrich.form.field.label.label
+            tooltip: kiboko_enrich.form.field.label.help
+            readOnly: false

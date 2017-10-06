@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: mghoubali
+ * Date: 03/10/2017
+ * Time: 09:45
+ */
 
 namespace Kiboko\Bundle\EnrichBundle\DependencyInjection;
 
@@ -16,5 +22,8 @@ class KibokoEnrichExtension extends Extension
     {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('form_types.yml');
+        $loader->load('view_elements.yml');
+        $loader->load('services.yml');
+        //$loader->load('normalizers.yml');
     }
 }

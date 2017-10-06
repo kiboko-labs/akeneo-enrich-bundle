@@ -1,0 +1,55 @@
+{%- block form_widget_simple -%}
+    {%- set type = type|default('text') -%}
+    {%- set displayFolder = displayFolder|default(true) -%}
+
+    {% if attr.class is defined %}
+        {% if 'input-' not in attr.class %}
+            {% set class = attr.class ~ ' AknTextField' %}
+        {% else %}
+            {% set class = attr.class %}
+        {% endif %}
+    {% else %}
+        {% set class = ' AknTextField' %}
+    {% endif %}
+
+    {% if 'file' == type %}
+        {% set class = class ~ ' AknTextField--file hide' %}
+    {% endif %}
+    {% set attr = attr|merge({'class': class }) %}
+
+    {% if type in ['text', 'hidden'] %}
+        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% else %}
+        {% set empty = not form.parent.vars.value or not form.parent.vars.value.key %}
+        <label>
+            <div class="upload-info">
+                {% if not empty %}
+                    <a class="no-hash upload-preview" href="{{ path('pim_enrich_media_show', { 'filename': form.parent.vars.value.key|url_encode, 'filter': 'thumbnail_small' }) }}" target="_blank" title="{{ form.parent.vars.value.originalFilename }}">
+                        <div class="AknMediaField-thumb file">
+                            <img src="{{ path('pim_enrich_media_show', { 'filename': form.parent.vars.value.key|url_encode, 'filter': 'thumbnail_small' }) }}" class="AknMediaField-picture"/>
+                        </div>
+                    </a>
+                    {% set filename = form.parent.vars.value.originalFilename %}
+                    {% if filename|length > 20 %}
+                        {% set filename = filename|slice(0, 17) ~ '...' %}
+                    {% endif %}
+                {% else %}
+                    <img src="/bundles/pimui/images/upload.png" alt="upload icon" class="upload-preview">
+                {% endif %}
+                <span class="upload-filename" data-empty-title="{{ 'Drag and drop a file or click here'|trans }}">{% if empty %}{{ 'Drag and drop a file or click here'|trans }}{% else %}{{ filename }}{% endif %}</span>
+            </div>
+            <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+        </label>
+        {{ block('form_info') }}
+        <div class="AknIconButton"><i class="icon-folder-close" id="pictureFallbackFolder" aria-hidden="true"></i></div>
+
+        <script type="text/javascript">
+            require(
+                ['pim/fileinput'],
+                function(fileinput) {
+                    fileinput.init('{{ form.vars.id }}');
+                }
+            );
+        </script>
+    {% endif %}
+{%- endblock form_widget_simple -%}

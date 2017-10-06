@@ -1,0 +1,16 @@
+parameters:
+
+services:
+    kiboko_enrich.form.event_subscriber:
+        class: Kiboko\Bundle\EnrichBundle\Form\EventListener\PicturedFormListener
+        arguments: ['@kiboko_enrich.fileinfo.utils']
+
+    kiboko_enrich.form.pictured.file_saver:
+        class: Kiboko\Bundle\EnrichBundle\EventListener\FilePersister
+        arguments: ['@oneup_flysystem.catalog_storage_filesystem']
+        tags:
+            - { name: kernel.event_listener, event: akeneo.storage.post_save }
+
+    kiboko_enrich.fileinfo.utils:
+        class: Kiboko\Bundle\EnrichBundle\Utils\FileInfoUtils
+        arguments: ['@akeneo_file_storage.file_storage.file_info_factory']

@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class TranslatableFieldType extends AbstractType
+class TranslatableType extends AbstractType
 {
     /**
      * @var ValidatorInterface

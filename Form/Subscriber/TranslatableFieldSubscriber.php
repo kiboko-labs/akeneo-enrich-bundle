@@ -137,7 +137,7 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
                 $this->formFactory->createNamed(
                     $binded['fieldName'],
                     $this->getOption('widget'),
-                    null, //$accessor->getValue($binded, sprintf('[translation].%s', $this->getOption('field'))),
+                    $accessor->getValue($binded, sprintf('[translation].%s', $this->getOption('field'))),
                     [
                         'label'           => $this->localeHelper->getLocaleLabel($binded['locale']),
                         'required'        => in_array($binded['locale'], $this->getOption('required_locale')),

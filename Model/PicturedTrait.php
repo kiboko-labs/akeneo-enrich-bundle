@@ -1,0 +1,116 @@
+<?php
+
+namespace Kiboko\Bundle\EnrichBundle\Model;
+
+use Akeneo\Component\FileStorage\Model\FileInfoInterface;
+use Akeneo\Component\Localization\Model\TranslationInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
+trait PicturedTrait
+{
+    /**
+     * @var FileInfoInterface
+     */
+    protected $pictureFallback;
+
+    /**
+     * @param string $locale
+     *
+     * @return PicturedTranslationInterface
+     */
+    abstract public function getTranslation($locale = null);
+
+    /**
+     * @return Collection|PicturedTranslationInterface[]
+     */
+    abstract public function getTranslations();
+
+    /**
+     * @param string $locale
+     *
+     * @return FileInfoInterface
+     */
+    public function getPicture($locale = null)
+    {
+        if (null === ($translation = $this->getTranslation($locale))) {
+            return $this->pictureFallback;
+        }
+
+        if (!$translation instanceof PicturedTranslationInterface) {
+            throw new \RuntimeException(
+                strtr('Translation class %found% should implement %expected%.',
+                    [
+                        '%found%' => get_class($translation),
+                        '%expected%' => PicturedTranslationInterface::class,
+                    ]
+                )
+            );
+        }
+
+        return $description;
+    }
+
+    /**
+     * @param FileInfoInterface $picture
+     * @param string $locale
+     */
+    public function setPicture(FileInfoInterface $picture, $locale = null)
+    {
+        if (null === ($translation = $this->getTranslation($locale))) {
+            throw new \RuntimeException(
+                strtr('Missing translation for locale %locale%.',
+                    [
+                        '%locale%' => $locale,
+                    ]
+                )
+            );
+        }
+
+        if (!$translation instanceof PicturedTranslationInterface) {
+            throw new \RuntimeException(
+                strtr('Translation class %found% shoi-uld implement %expected%.',
+                    [
+                        '%found%' => get_class($translation),
+                        '%expected%' => PicturedTranslationInterface::class,
+                    ]
+                )
+            );
+        }
+
+        $translation->setPicture($picture);
+    }
+
+    /**
+     * @return Collection|FileInfoInterface[]
+     */
+    public function getPictures()
+    {
+        $pictures = new ArrayCollection();
+        if ($this->pictureFallback) {
+            $pictures->offsetSet(null, $this->pictureFallback);
+        }
+
+        foreach ($this->getTranslations() as $translation) {
+            $pictures->offsetSet($translation->getLocale(), $translation->getPicture());
+        }
+
+        return $pictures;
+    }
+
+    /**
+     * @return FileInfoInterface
+     */
+    public function getPictureFallback()
+    {
+        return $this->pictureFallback;
+    }
+
+    /**
+     * @param FileInfoInterface $picture
+     */
+    public function setPictureFallback(FileInfoInterface $picture = null)
+    {
+        $this->pictureFallback = $picture;
+    }
+}

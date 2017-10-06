@@ -1,0 +1,3 @@
+{% if value is not null %}
+    <img src="{{ path('pim_enrich_media_show', { 'filename': value.key|url_encode, 'filter': 'thumbnail_small' }) }}" title="{{ value.originalFilename }}">
+{% endif %}

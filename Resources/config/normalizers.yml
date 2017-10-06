@@ -1,0 +1,11 @@
+#parameters:
+#  arc_trading_area.normalizer.trading_area.class: Arc\Bundle\TradingAreaBundle\Normalizer\TradingAreaNormalizer
+#
+#services:
+#  pim_serializer.normalizer.flat.trading_area:
+#    public: false
+#    class: '%arc_trading_area.normalizer.trading_area.class%'
+#    arguments:
+#      - '@pim_catalog.filter.chained'
+#    tags:
+#      - { name: pim_serializer.normalizer, priority: 150 }

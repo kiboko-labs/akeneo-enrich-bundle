@@ -1,0 +1,14 @@
+{%- block form_widget_simple -%}
+    {% if attr.class is defined %}
+        {% if 'input-' not in attr.class %}
+            {% set class = attr.class ~ ' AknTextField' %}
+        {% else %}
+            {% set class = attr.class %}
+        {% endif %}
+    {% else %}
+        {% set class = ' AknTextField' %}
+    {% endif %}
+    {% set attr = attr|merge({'class': class }) %}
+    <input type="text" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    <div class="AknIconButton"><i class="icon-folder-close" id="labelFallbackFolder" aria-hidden="true"></i></div>
+{%- endblock form_widget_simple -%}
