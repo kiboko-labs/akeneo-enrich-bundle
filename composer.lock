@@ -8,17 +8,17 @@
     "packages": [
         {
             "name": "akeneo-labs/custom-entity-bundle",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "target-dir": "Pim/Bundle/CustomEntityBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/akeneo-labs/CustomEntityBundle.git",
-                "reference": "37a0d4b4b93f2727312e7cf99c53c5f8ea484c36"
+                "reference": "f896d926665fe0118c8df21cd624a85bb098d25c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/akeneo-labs/CustomEntityBundle/zipball/37a0d4b4b93f2727312e7cf99c53c5f8ea484c36",
-                "reference": "37a0d4b4b93f2727312e7cf99c53c5f8ea484c36",
+                "url": "https://api.github.com/repos/akeneo-labs/CustomEntityBundle/zipball/f896d926665fe0118c8df21cd624a85bb098d25c",
+                "reference": "f896d926665fe0118c8df21cd624a85bb098d25c",
                 "shasum": ""
             },
             "require": {
@@ -53,10 +53,10 @@
                 "reference data"
             ],
             "support": {
-                "source": "https://github.com/akeneo-labs/CustomEntityBundle/tree/v1.10.2",
+                "source": "https://github.com/akeneo-labs/CustomEntityBundle/tree/v1.10.3",
                 "issues": "https://github.com/akeneo-labs/CustomEntityBundle/issues"
             },
-            "time": "2017-08-09T14:52:26+00:00"
+            "time": "2017-10-05T21:48:54+00:00"
         },
         {
             "name": "akeneo/pim-community-dev",
