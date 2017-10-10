@@ -649,8 +649,16 @@ require(['jquery'], function($) {
 Kiboko, who we are ?
 ====================
 
-
+Kiboko is a consulting and development agency for e-commerce and business solutions,
+created by the reunion of 3 e-commerce seasoned developers, working on various scale
+of e-commerce websites. Depending on your business needs, Kiboko develops and maintains
+e-commerce web stores using Magento and OroCommerce. Kiboko also integrates Akeneo (PIM),
+OroCRM (CRM) and Marello (ERP) into pre-existing environement or into a new one to build as
+your business needs. Kiboko has been one of the first companies to trust OroCommerce as a
+true B2B e-commerce solution and one of the first to release live a web store using it.
 
 
 Contributing
 ====================
+
+Please feel free to create [new issues on Github](https://github.com/kiboko-labs/akeneo-enrich-bundle/issues)
