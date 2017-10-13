@@ -356,7 +356,7 @@ datagrid:
                  labelFallback:
                      type:      string
                      label:     Label
-                     data_name: pictogram.labelFallback
+                     data_name: rd.labelFallback
                  created:
                      type:             date
                      label:            Created
@@ -372,7 +372,7 @@ datagrid:
                  code:
                      data_name: rd.code
                  labelFallback:
-                     data_name: pictogram.labelFallback
+                     data_name: rd.labelFallback
                  created:
                      data_name: rd.created
                  updated:
