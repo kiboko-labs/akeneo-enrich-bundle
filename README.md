@@ -546,7 +546,7 @@ custom_entities:
 Now you are ready to create your custom entity form view.  
 Create in the views folder of your bundle a twig file named `form.html.twig` as specified in your 
 custom entities configuration file.  
-`Resources/views/form.html.twig`  
+`Resources/views/Pictogram/form.html.twig`  
 
 
 ```html
