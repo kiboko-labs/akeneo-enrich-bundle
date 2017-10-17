@@ -2,13 +2,11 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Form\EventListener;
 
-use Akeneo\Component\FileStorage\Model\FileInfoInterface;;
+use Akeneo\Component\FileStorage\Model\FileInfoInterface;
 
-use Arc\Bundle\PictogramBundle\Model\MutablePictogramInterface;
-use Arc\Bundle\PictogramBundle\Model\MutablePictogramTranslationInterface;
 use Kiboko\Bundle\EnrichBundle\Model\PicturedInterface;
 use Kiboko\Bundle\EnrichBundle\Model\PicturedTranslationInterface;
-use Kiboko\Bundle\EnrichBundle\Utils\FileInfoUtils;
+use Kiboko\Bundle\EnrichBundle\Utils\FileInfo;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -16,16 +14,16 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class PicturedFormListener implements EventSubscriberInterface
 {
     /**
-     * @var FileInfoUtils
+     * @var FileInfo
      */
     private $utils;
 
     /**
      * FormListener constructor.
      *
-     * @param FileInfoUtils $utils
+     * @param FileInfo $utils
      */
-    public function __construct(FileInfoUtils $utils)
+    public function __construct(FileInfo $utils)
     {
         $this->utils = $utils;
     }
@@ -59,6 +57,8 @@ class PicturedFormListener implements EventSubscriberInterface
                     $this->utils->enrichImageFile($pictureFile)
                 );
             }
+        } else {
+            $pictured->setPictureFallback(null);
         }
 
         /** @var PicturedTranslationInterface $pictureTranslation */
@@ -73,6 +73,8 @@ class PicturedFormListener implements EventSubscriberInterface
                         $this->utils->enrichImageFile($pictureFile)
                     );
                 }
+            } else {
+                $pictureTranslation->setPicture(null);
             }
         }
     }
