@@ -4,8 +4,6 @@ namespace Kiboko\Bundle\EnrichBundle\Form\EventListener;
 
 use Akeneo\Component\FileStorage\Model\FileInfoInterface;;
 
-use Arc\Bundle\PictogramBundle\Model\MutablePictogramInterface;
-use Arc\Bundle\PictogramBundle\Model\MutablePictogramTranslationInterface;
 use Kiboko\Bundle\EnrichBundle\Model\PicturedInterface;
 use Kiboko\Bundle\EnrichBundle\Model\PicturedTranslationInterface;
 use Kiboko\Bundle\EnrichBundle\Utils\FileInfoUtils;
