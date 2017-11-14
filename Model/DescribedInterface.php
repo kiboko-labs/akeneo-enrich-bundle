@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mghoubali
- * Date: 03/10/2017
- * Time: 16:39
- */
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
-
 
 use Akeneo\Component\Localization\Model\TranslatableInterface;
 use Doctrine\Common\Collections\Collection;
@@ -19,26 +12,26 @@ interface DescribedInterface extends TranslatableInterface
      *
      * @return string
      */
-    public function getDescription($locale = null);
+    public function getDescription(?string $locale = null): ?string;
 
     /**
      * @param string $description
      * @param string $locale
      */
-    public function setDescription($description, $locale = null);
+    public function setDescription(?string $description, ?string $locale = null);
 
     /**
      * @return Collection|DescribedTranslationInterface[]
      */
-    public function getDescriptions();
+    public function getDescriptions(): Collection;
 
     /**
      * @return string
      */
-    public function getDescriptionFallback();
+    public function getDescriptionFallback(): string;
 
     /**
      * @param string $description
      */
-    public function setDescriptionFallback($description);
+    public function setDescriptionFallback(string $description);
 }

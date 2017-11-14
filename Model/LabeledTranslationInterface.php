@@ -9,11 +9,11 @@ interface LabeledTranslationInterface extends TranslationInterface
     /**
      * @return string
      */
-    public function getLabel();
+    public function getLabel(): ?string;
 
     /**
      * @param string $label
      */
-    public function setLabel($label);
+    public function setLabel(?string $label);
 
 }

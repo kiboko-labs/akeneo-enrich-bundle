@@ -2,7 +2,6 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
 
-
 use Akeneo\Component\FileStorage\Model\FileInfoInterface;
 use Akeneo\Component\Localization\Model\TranslatableInterface;
 use Doctrine\Common\Collections\Collection;
@@ -14,27 +13,27 @@ interface PicturedInterface extends TranslatableInterface
      *
      * @return FileInfoInterface
      */
-    public function getPicture($locale = null);
+    public function getPicture(?string $locale = null): ?FileInfoInterface;
 
     /**
      * @param FileInfoInterface $picture
      * @param string $locale
      */
-    public function setPicture(FileInfoInterface $picture, $locale = null);
+    public function setPicture(?FileInfoInterface $picture, ?string $locale = null);
 
     /**
      * @return Collection|FileInfoInterface[]
      */
-    public function getPictures();
+    public function getPictures(): collection;
 
     /**
      * @return FileInfoInterface
      */
-    public function getPictureFallback();
+    public function getPictureFallback(): FileInfoInterface;
 
     /**
      * @param FileInfoInterface $picture
      */
-    public function setPictureFallback(FileInfoInterface $picture = null);
+    public function setPictureFallback(FileInfoInterface $picture);
 
 }

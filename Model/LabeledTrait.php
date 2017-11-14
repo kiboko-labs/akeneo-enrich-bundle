@@ -16,21 +16,21 @@ trait LabeledTrait
     /**
      * @param string $locale
      *
-     * @return LabeledTranslationInterface
+     * @return TranslationInterface|LabeledTranslationInterface
      */
-    abstract public function getTranslation($locale = null);
+    abstract public function getTranslation(?string $locale = null);
 
     /**
      * @return Collection|LabeledTranslationInterface[]
      */
-    abstract public function getTranslations();
+    abstract public function getTranslations(): ArrayCollection;
 
     /**
      * @param string $locale
      *
      * @return string
      */
-    public function getLabel($locale = null)
+    public function getLabel(?string $locale = null): ?string
     {
         if (null === ($translation = $this->getTranslation($locale))) {
             return $this->labelFallback;
@@ -58,7 +58,7 @@ trait LabeledTrait
      * @param string $label
      * @param string $locale
      */
-    public function setLabel($label, $locale = null)
+    public function setLabel(?string $label, ?string $locale = null)
     {
         if (null === ($translation = $this->getTranslation($locale))) {
             throw new \RuntimeException(
@@ -87,7 +87,7 @@ trait LabeledTrait
     /**
      * @return Collection|LabeledTranslationInterface
      */
-    public function getLabels()
+    public function getLabels(): Collection
     {
         $labels = new ArrayCollection();
         if ($this->labelFallback) {
@@ -104,7 +104,7 @@ trait LabeledTrait
     /**
      * @return string
      */
-    public function getLabelFallback()
+    public function getLabelFallback(): string
     {
         return $this->labelFallback;
     }

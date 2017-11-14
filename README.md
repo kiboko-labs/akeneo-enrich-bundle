@@ -28,7 +28,7 @@ How to: create a custom reference data
 ### The Kiboko entity helper traits
 We built 3 helper traits for common attributes that constitue most of custom entity reference data.
 
-* [*Labelled*](Model/LabeledTrait.php): A short text label
+* [*Labeled*](Model/LabeledTrait.php): A short text label
 * [*Described*](Model/DescribedTrait.php): A long text description
 * [*Pictured*](Model/PicturedTrait.php): A picture
 
@@ -142,9 +142,8 @@ in the following example we will call it `PictogramTranslation`.
 namespace Arc\Bundle\PictogramBundle\Entity;
 
 use Akeneo\Component\Localization\Model\AbstractTranslation;
-use Arc\Component\ReferenceData\Model\PictogramTranslationInterface;
 use Kiboko\Bundle\EnrichBundle\Model\DescribedTranslationTrait;
-use Kiboko\Bundle\EnrichBundle\Model\LabelledTranslationTrait;
+use Kiboko\Bundle\EnrichBundle\Model\LabeledTranslationTrait;
 use Kiboko\Bundle\EnrichBundle\Model\PicturedTranslationTrait;
 
 class PictogramTranslation extends AbstractTranslation implements 
@@ -153,7 +152,7 @@ class PictogramTranslation extends AbstractTranslation implements
     PicturedTranslationInterface
 {
     use DescribedTranslationTrait;
-    use LabelledTranslationTrait;
+    use LabeledTranslationTrait;
     use PicturedTranslationTrait;
 }
 ```
@@ -161,7 +160,7 @@ class PictogramTranslation extends AbstractTranslation implements
 This class extends `AbstractTranslation` as stated by the CustomEntityBundle documentation.
 
 It also have to implement the translation interface and use their corresponding translation helper traits :  
-* `LabelledTranslationTrait` for `LabeledTranslationInterface` implementation
+* `LabeledTranslationTrait` for `LabeledTranslationInterface` implementation
 * `DescribedTranslationTrait` for `DescribedTranslationInterface` implementation  
 * `PicturedTranslationTrait` for `PicturedTranslationInterface` implementation
 

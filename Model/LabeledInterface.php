@@ -18,27 +18,26 @@ interface LabeledInterface extends TranslatableInterface
      *
      * @return string
      */
-    public function getLabel($locale = null);
+    public function getLabel(?string $locale = null): ?string;
 
     /**
      * @param string $label
      * @param string $locale
      */
-    public function setLabel($label, $locale = null);
+    public function setLabel(?string $label, ?string $locale = null);
 
     /**
      * @return Collection|LabeledTranslationInterface[]
      */
-    public function getLabels();
+    public function getLabels(): Collection;
 
     /**
      * @return string
      */
-    public function getLabelFallback();
+    public function getLabelFallback(): string;
 
     /**
      * @param string $labelFallback
      */
     public function setLabelFallback(string $labelFallback);
-
 }

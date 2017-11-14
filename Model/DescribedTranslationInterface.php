@@ -9,10 +9,10 @@ interface DescribedTranslationInterface extends TranslationInterface
     /**
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * @param string $description
      */
-    public function setDescription($description);
+    public function setDescription(?string $description);
 }

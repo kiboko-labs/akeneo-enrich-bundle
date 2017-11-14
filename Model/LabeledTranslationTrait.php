@@ -2,7 +2,7 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
 
-trait LabelledTranslationTrait
+trait LabeledTranslationTrait
 {
     /**
      * @var string
@@ -12,7 +12,7 @@ trait LabelledTranslationTrait
     /**
      * @return string
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -20,7 +20,7 @@ trait LabelledTranslationTrait
     /**
      * @param string $label
      */
-    public function setLabel($label)
+    public function setLabel(?string $label)
     {
         $this->label = $label;
     }

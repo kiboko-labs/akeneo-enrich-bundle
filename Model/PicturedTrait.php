@@ -17,21 +17,21 @@ trait PicturedTrait
     /**
      * @param string $locale
      *
-     * @return PicturedTranslationInterface
+     * @return TranslationInterface|PicturedTranslationInterface
      */
-    abstract public function getTranslation($locale = null);
+    abstract public function getTranslation(?string $locale = null);
 
     /**
-     * @return Collection|PicturedTranslationInterface[]
+     * @return Collection|ArrayCollection|ArrayCollection|PicturedTranslationInterface[]
      */
-    abstract public function getTranslations();
+    abstract public function getTranslations(): ArrayCollection;
 
     /**
      * @param string $locale
      *
      * @return FileInfoInterface
      */
-    public function getPicture($locale = null)
+    public function getPicture(?string $locale = null): ?FileInfoInterface
     {
         if (null === ($translation = $this->getTranslation($locale))) {
             return $this->pictureFallback;
@@ -48,14 +48,14 @@ trait PicturedTrait
             );
         }
 
-        return $description;
+        return $translation->getPicture();
     }
 
     /**
      * @param FileInfoInterface $picture
      * @param string $locale
      */
-    public function setPicture(FileInfoInterface $picture, $locale = null)
+    public function setPicture(?FileInfoInterface $picture, $locale = null)
     {
         if (null === ($translation = $this->getTranslation($locale))) {
             throw new \RuntimeException(
@@ -84,7 +84,7 @@ trait PicturedTrait
     /**
      * @return Collection|FileInfoInterface[]
      */
-    public function getPictures()
+    public function getPictures(): Collection
     {
         $pictures = new ArrayCollection();
         if ($this->pictureFallback) {
@@ -101,7 +101,7 @@ trait PicturedTrait
     /**
      * @return FileInfoInterface
      */
-    public function getPictureFallback()
+    public function getPictureFallback(): FileInfoInterface
     {
         return $this->pictureFallback;
     }
@@ -109,7 +109,7 @@ trait PicturedTrait
     /**
      * @param FileInfoInterface $picture
      */
-    public function setPictureFallback(FileInfoInterface $picture = null)
+    public function setPictureFallback(FileInfoInterface $picture)
     {
         $this->pictureFallback = $picture;
     }

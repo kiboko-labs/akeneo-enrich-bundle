@@ -16,21 +16,21 @@ trait DescribedTrait
     /**
      * @param string $locale
      *
-     * @return DescribedTranslationInterface
+     * @return TranslationInterface|DescribedTranslationInterface
      */
-    abstract public function getTranslation($locale = null);
+    abstract public function getTranslation(?string $locale = null);
 
     /**
-     * @return Collection|DescribedTranslationInterface[]
+     * @return Collection|ArrayCollection|DescribedTranslationInterface[]
      */
-    abstract public function getTranslations();
+    abstract public function getTranslations(): ArrayCollection;
 
     /**
      * @param string $locale
      *
      * @return string
      */
-    public function getDescription($locale = null)
+    public function getDescription(?string $locale = null): ?string
     {
         if (null === ($translation = $this->getTranslation($locale))) {
             return $this->descriptionFallback;
@@ -58,7 +58,7 @@ trait DescribedTrait
      * @param string $description
      * @param string $locale
      */
-    public function setDescription($description, $locale = null)
+    public function setDescription(?string $description, ?string $locale = null)
     {
         if (null === ($translation = $this->getTranslation($locale))) {
             throw new \RuntimeException(
@@ -87,7 +87,7 @@ trait DescribedTrait
     /**
      * @return Collection|DescribedTranslationInterface[]
      */
-    public function getDescriptions()
+    public function getDescriptions(): Collection
     {
         $descriptions = new ArrayCollection();
         if ($this->descriptionFallback) {
@@ -104,7 +104,7 @@ trait DescribedTrait
     /**
      * @return string
      */
-    public function getDescriptionFallback()
+    public function getDescriptionFallback(): string
     {
         return $this->descriptionFallback;
     }
@@ -112,7 +112,7 @@ trait DescribedTrait
     /**
      * @param string $description
      */
-    public function setDescriptionFallback($description)
+    public function setDescriptionFallback(string $description)
     {
         $this->descriptionFallback = $description;
     }
