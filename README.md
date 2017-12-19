@@ -139,7 +139,7 @@ in the following example we will call it `PictogramTranslation`.
 
 ```php
 <?php
-namespace Arc\Bundle\PictogramBundle\Entity;
+namespace MyProject\Bundle\PictogramBundle\Entity;
 
 use Akeneo\Component\Localization\Model\AbstractTranslation;
 use Kiboko\Bundle\EnrichBundle\Model\DescribedTranslationTrait;
