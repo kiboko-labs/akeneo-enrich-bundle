@@ -23,7 +23,7 @@ trait DescribedTrait
     /**
      * @return Collection|ArrayCollection|DescribedTranslationInterface[]
      */
-    abstract public function getTranslations(): \Doctrine\Common\Collections\ArrayCollection;
+    abstract public function getTranslations(): ArrayCollection;
 
     /**
      * @param string $locale

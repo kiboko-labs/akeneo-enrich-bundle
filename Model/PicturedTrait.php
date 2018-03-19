@@ -24,7 +24,7 @@ trait PicturedTrait
     /**
      * @return Collection|ArrayCollection|ArrayCollection|PicturedTranslationInterface[]
      */
-    abstract public function getTranslations(): \Doctrine\Common\Collections\ArrayCollection;
+    abstract public function getTranslations(): ArrayCollection;
 
     /**
      * @param string $locale
