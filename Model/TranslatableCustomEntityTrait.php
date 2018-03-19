@@ -8,7 +8,7 @@ use Symfony\Component\PropertyAccess\PropertyAccessorBuilder;
 
 trait TranslatableCustomEntityTrait
 {
-    use CustomEntityTrait;
+    use ReferenceDataTrait;
     use TranslatableTrait;
 
     /**

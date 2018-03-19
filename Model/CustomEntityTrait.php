@@ -23,7 +23,7 @@ trait CustomEntityTrait
     /**
      * @return \DateTimeInterface
      */
-    public function getCreated()
+    public function getCreated(): ?\DateTimeInterface
     {
         return $this->created;
     }
@@ -31,7 +31,7 @@ trait CustomEntityTrait
     /**
      * @return \DateTimeInterface
      */
-    public function getUpdated()
+    public function getUpdated(): ?\DateTimeInterface
     {
         return $this->updated;
     }
@@ -66,14 +66,14 @@ trait CustomEntityTrait
      *
      * @return string
      */
-    abstract public function getCustomEntityName();
+    abstract public function getCustomEntityName(): string;
 
     /**
      * Returns the sort order
      *
      * @return string
      */
-    public static function getSortOrderColumn()
+    public static function getSortOrderColumn(): string
     {
         return 'sortOrder';
     }

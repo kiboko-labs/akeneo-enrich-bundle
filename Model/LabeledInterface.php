@@ -34,7 +34,7 @@ interface LabeledInterface extends TranslatableInterface
     /**
      * @return string
      */
-    public function getLabelFallback(): string;
+    public function getLabelFallback(): ?string;
 
     /**
      * @param string $labelFallback

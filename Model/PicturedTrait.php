@@ -24,7 +24,7 @@ trait PicturedTrait
     /**
      * @return Collection|ArrayCollection|ArrayCollection|PicturedTranslationInterface[]
      */
-    abstract public function getTranslations(): ArrayCollection;
+    abstract public function getTranslations(): \Doctrine\Common\Collections\ArrayCollection;
 
     /**
      * @param string $locale
@@ -55,7 +55,7 @@ trait PicturedTrait
      * @param FileInfoInterface $picture
      * @param string $locale
      */
-    public function setPicture(?FileInfoInterface $picture, $locale = null)
+    public function setPicture(?FileInfoInterface $picture, ?string $locale = null)
     {
         if (null === ($translation = $this->getTranslation($locale))) {
             throw new \RuntimeException(
@@ -101,7 +101,7 @@ trait PicturedTrait
     /**
      * @return FileInfoInterface
      */
-    public function getPictureFallback(): FileInfoInterface
+    public function getPictureFallback(): ?FileInfoInterface
     {
         return $this->pictureFallback;
     }
@@ -109,7 +109,7 @@ trait PicturedTrait
     /**
      * @param FileInfoInterface $picture
      */
-    public function setPictureFallback(FileInfoInterface $picture)
+    public function setPictureFallback(?FileInfoInterface $picture)
     {
         $this->pictureFallback = $picture;
     }
