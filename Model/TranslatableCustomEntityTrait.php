@@ -8,8 +8,7 @@ use Symfony\Component\PropertyAccess\PropertyAccessorBuilder;
 
 trait TranslatableCustomEntityTrait
 {
-    use CustomEntityTrait;
-    use TranslatableTrait;
+    use ReferenceDataTrait;
 
     /**
      * @return string
@@ -19,7 +18,7 @@ trait TranslatableCustomEntityTrait
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (null !== ($translation = $this->getTranslation())) {
             if (null !== ($labelProperty = static::getLabelProperty())) {

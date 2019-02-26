@@ -29,11 +29,11 @@ interface PicturedInterface extends TranslatableInterface
     /**
      * @return FileInfoInterface
      */
-    public function getPictureFallback(): FileInfoInterface;
+    public function getPictureFallback(): ?FileInfoInterface;
 
     /**
      * @param FileInfoInterface $picture
      */
-    public function setPictureFallback(FileInfoInterface $picture);
+    public function setPictureFallback(?FileInfoInterface $picture);
 
 }

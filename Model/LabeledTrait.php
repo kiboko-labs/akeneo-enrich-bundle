@@ -21,7 +21,7 @@ trait LabeledTrait
     abstract public function getTranslation(?string $locale = null);
 
     /**
-     * @return Collection|LabeledTranslationInterface[]
+     * @return ArrayCollection|LabeledTranslationInterface[]
      */
     abstract public function getTranslations(): ArrayCollection;
 
@@ -104,7 +104,7 @@ trait LabeledTrait
     /**
      * @return string
      */
-    public function getLabelFallback(): string
+    public function getLabelFallback(): ?string
     {
         return $this->labelFallback;
     }
