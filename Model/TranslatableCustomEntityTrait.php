@@ -18,7 +18,7 @@ trait TranslatableCustomEntityTrait
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         if (null !== ($translation = $this->getTranslation())) {
             if (null !== ($labelProperty = static::getLabelProperty())) {
