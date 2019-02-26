@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "akeneo/pim-community-dev": "2.3.*",
+        "akeneo/pim-community-dev": "2.*",
         "akeneo-labs/custom-entity-bundle": "~2.4"
     },
     "autoload": {
