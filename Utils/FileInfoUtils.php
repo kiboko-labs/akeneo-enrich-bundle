@@ -2,9 +2,9 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Utils;
 
-use Akeneo\Component\FileStorage\FileInfoFactoryInterface;
-use Akeneo\Component\FileStorage\Model\FileInfoInterface;
-use Pim\Component\Catalog\FileStorage;
+use Akeneo\Pim\Enrichment\Component\FileStorage;
+use Akeneo\Tool\Component\FileStorage\FileInfoFactoryInterface;
+use Akeneo\Tool\Component\FileStorage\Model\FileInfoInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**

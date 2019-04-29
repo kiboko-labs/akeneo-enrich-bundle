@@ -2,7 +2,7 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
 
-use Akeneo\Component\Localization\Model\TranslatableInterface;
+use Akeneo\Tool\Component\Localization\Model\TranslatableInterface;
 use Doctrine\Common\Collections\Collection;
 
 interface DescribedInterface extends TranslatableInterface

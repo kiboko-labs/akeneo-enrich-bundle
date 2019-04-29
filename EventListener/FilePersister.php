@@ -2,8 +2,7 @@
 
 namespace Kiboko\Bundle\EnrichBundle\EventListener;
 
-use Akeneo\Component\FileStorage\Model\FileInfoInterface;
-use Kiboko\Bundle\EnrichBundle\Entity\Translatable;
+use Akeneo\Tool\Component\FileStorage\Model\FileInfoInterface;
 use Kiboko\Bundle\EnrichBundle\Model\PicturedInterface;
 use Kiboko\Bundle\EnrichBundle\Model\PicturedTranslationInterface;
 use League\Flysystem\Filesystem;
@@ -22,6 +21,8 @@ class FilePersister
 
     /**
      * @param GenericEvent $event
+     *
+     * @throws \League\Flysystem\FileExistsException
      */
     public function onAkeneoStoragePostsave(GenericEvent $event)
     {
@@ -55,6 +56,8 @@ class FilePersister
     /**
      * @param FileInfoInterface $picture
      * @param UploadedFile $file
+     *
+     * @throws \League\Flysystem\FileExistsException
      */
     private function persistFile(FileInfoInterface $picture, UploadedFile $file)
     {

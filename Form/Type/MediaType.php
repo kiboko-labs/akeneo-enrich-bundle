@@ -2,7 +2,7 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Form\Type;
 
-use Akeneo\Bundle\FileStorageBundle\Form\Type\FileInfoType;
+use Akeneo\Tool\Bundle\FileStorageBundle\Form\Type\FileInfoType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 class MediaType extends FileInfoType

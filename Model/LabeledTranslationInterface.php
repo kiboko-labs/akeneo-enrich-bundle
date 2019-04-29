@@ -2,8 +2,12 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
 
-use Akeneo\Component\Localization\Model\TranslationInterface;
+use Akeneo\Tool\Component\Localization\Model\TranslationInterface;
 
+/**
+ * Interface LabeledTranslationInterface
+ * @package Kiboko\Bundle\EnrichBundle\Model
+ */
 interface LabeledTranslationInterface extends TranslationInterface
 {
     /**

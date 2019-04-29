@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "akeneo-labs/custom-entity-bundle": "~2.1|~2.2|~2.4|~3.0"
+        "akeneo-labs/custom-entity-bundle": "~3.0"
     },
     "autoload": {
         "psr-4": {
@@ -29,7 +29,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "3.0.x-dev"
         }
     }
 }

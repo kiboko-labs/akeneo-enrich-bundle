@@ -2,7 +2,7 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
 
-use Akeneo\Component\FileStorage\Model\FileInfoInterface;
+use Akeneo\Tool\Component\FileStorage\Model\FileInfoInterface;
 
 trait PicturedTranslationTrait
 {

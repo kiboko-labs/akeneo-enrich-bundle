@@ -2,8 +2,6 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
 
-use Doctrine\Common\Collections\Collection;
-use Pim\Bundle\CustomEntityBundle\Entity\TranslatableTrait;
 use Symfony\Component\PropertyAccess\PropertyAccessorBuilder;
 
 trait TranslatableCustomEntityTrait

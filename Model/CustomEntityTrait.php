@@ -39,7 +39,7 @@ trait CustomEntityTrait
     /**
      * @param \DateTimeInterface $created
      *
-     * @return AbstractCustomEntity
+     * @return CustomEntityTrait
      */
     public function setCreated(\DateTimeInterface $created)
     {
@@ -51,7 +51,7 @@ trait CustomEntityTrait
     /**
      * @param \DateTimeInterface $updated
      *
-     * @return AbstractCustomEntity
+     * @return CustomEntityTrait
      */
     public function setUpdated(\DateTimeInterface $updated)
     {

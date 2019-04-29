@@ -2,11 +2,10 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Form\Subscriber;
 
-use Akeneo\Component\Localization\Factory\TranslationFactory;
+use Akeneo\Platform\Bundle\UIBundle\Exception\MissingOptionException;
+use Akeneo\Tool\Component\Localization\Factory\TranslationFactory;
+use Akeneo\UserManagement\Bundle\Context\UserContext;
 use Doctrine\Common\Inflector\Inflector;
-use Pim\Bundle\CatalogBundle\Helper\LocaleHelper;
-use Pim\Bundle\EnrichBundle\Exception\MissingOptionException;
-use Pim\Bundle\UserBundle\Context\UserContext;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\FormEvent;
@@ -38,11 +37,6 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
     protected $options;
 
     /**
-     * @var LocaleHelper
-     */
-    protected $localeHelper;
-
-    /**
      * @var UserContext
      */
     protected $userContext;
@@ -51,22 +45,21 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
      * Constructor
      *
      * @param FormFactoryInterface $formFactory
-     * @param ValidatorInterface   $validator
-     * @param UserContext          $userContext
-     * @param LocaleHelper         $localeHelper
-     * @param array                $options
+     * @param ValidatorInterface $validator
+     * @param UserContext $userContext
+     * @param array $options
+     *
+     * @throws MissingOptionException
      */
     public function __construct(
         FormFactoryInterface $formFactory,
         ValidatorInterface $validator,
         UserContext $userContext,
-        LocaleHelper $localeHelper,
         array $options
     ) {
         $this->formFactory = $formFactory;
         $this->validator = $validator;
         $this->userContext = $userContext;
-        $this->localeHelper = $localeHelper;
         $this->options = $options;
 
         $this->translationFactory = new TranslationFactory(
@@ -93,6 +86,8 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
      * Build the custom form based on the provided locales
      *
      * @param FormEvent $event
+     *
+     * @throws MissingOptionException
      */
     public function preSetData(FormEvent $event)
     {
@@ -139,7 +134,7 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
                     $this->getOption('widget'),
                     $accessor->getValue($binded, sprintf('[translation].%s', $this->getOption('field'))),
                     [
-                        'label'           => $this->localeHelper->getLocaleLabel($binded['locale']),
+                        'label'           => $this->getLocaleLabel($binded['locale']),
                         'required'        => in_array($binded['locale'], $this->getOption('required_locale')),
                         'mapped'          => false,
                         'auto_initialize' => false
@@ -153,6 +148,8 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
      * On submit event (validation)
      *
      * @param FormEvent $event
+     *
+     * @throws MissingOptionException
      */
     public function submit(FormEvent $event)
     {
@@ -190,6 +187,8 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
      * On post submit event (after validation)
      *
      * @param FormEvent $event
+     *
+     * @throws MissingOptionException
      */
     public function postSubmit(FormEvent $event)
     {
@@ -218,6 +217,7 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
      * @param array $data
      *
      * @return mixed string
+     * @throws MissingOptionException
      */
     protected function bindTranslations($data)
     {
@@ -249,6 +249,7 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
      * Helper method to generate field names in format : '<locale>' => '<field>|<locale>'
      *
      * @return string[]
+     * @throws MissingOptionException
      */
     protected function getFieldNames()
     {
@@ -280,5 +281,20 @@ class TranslatableFieldSubscriber implements EventSubscriberInterface
         }
 
         return $this->options[$name];
+    }
+
+    /**
+     * Returns the label of a locale in the specified language
+     *
+     * @param string $code        the code of the locale to translate
+     * @param string $translateIn the locale in which the label should be translated (if null, user locale will be used)
+     *
+     * @return string
+     */
+    private function getLocaleLabel($code, $translateIn = null)
+    {
+        $translateIn = $translateIn ?: $this->userContext->getCurrentLocaleCode();
+
+        return \Locale::getDisplayName($code, $translateIn);
     }
 }

@@ -3,8 +3,7 @@
 namespace Kiboko\Bundle\EnrichBundle\Form\Type;
 
 use Kiboko\Bundle\EnrichBundle\Form\Subscriber\TranslatableFieldSubscriber;
-use Pim\Bundle\CatalogBundle\Helper\LocaleHelper;
-use Pim\Bundle\UserBundle\Context\UserContext;
+use Akeneo\UserManagement\Bundle\Context\UserContext;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Exception\InvalidConfigurationException;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,24 +23,18 @@ class TranslatableType extends AbstractType
     protected $userContext;
 
     /**
-     * @var LocaleHelper
-     */
-    protected $localeHelper;
-
-    /**
      * @param ValidatorInterface $validator
-     * @param UserContext        $userContext
-     * @param LocaleHelper       $localeHelper
+     * @param UserContext $userContext
      */
-    public function __construct(ValidatorInterface $validator, UserContext $userContext, LocaleHelper $localeHelper)
+    public function __construct(ValidatorInterface $validator, UserContext $userContext)
     {
         $this->validator = $validator;
         $this->userContext = $userContext;
-        $this->localeHelper = $localeHelper;
     }
 
     /**
      * {@inheritdoc}
+     * @throws \Akeneo\Platform\Bundle\UIBundle\Exception\MissingOptionException
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -66,7 +59,6 @@ class TranslatableType extends AbstractType
             $builder->getFormFactory(),
             $this->validator,
             $this->userContext,
-            $this->localeHelper,
             $options
         );
         $builder->addEventSubscriber($subscriber);
@@ -95,7 +87,7 @@ class TranslatableType extends AbstractType
                 'locales'           => $this->userContext->getUserLocaleCodes(),
                 'user_locale'       => $this->userContext->getUiLocale(),
                 'required_locale'   => [],
-                'widget'            => 'text'
+                'widget'            => 'text',
             ]
         );
     }

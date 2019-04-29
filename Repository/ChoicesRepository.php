@@ -2,9 +2,7 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Repository;
 
-use Kiboko\Bundle\EnrichBundle\Model\MappedOption;
 use Doctrine\ORM\EntityManager;
-
 
 class ChoicesRepository
 {
@@ -38,7 +36,6 @@ class ChoicesRepository
         $values = $entityRepository->findAll();
         $choices = [];
 
-        /** @var MappedOption $value */
         foreach ($values as $value) {
             $choices[$value->getId()] = $value->getLabel();
         }

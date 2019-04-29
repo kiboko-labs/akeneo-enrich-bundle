@@ -8,13 +8,12 @@ services:
     arguments:
       - '@validator'
       - '@pim_user.context.user'
-      - '@pim_catalog.helper.locale'
     tags:
       - { name: form.type, alias: kiboko_translatable_field }
 
   kiboko_enrich.form.type.media_field:
     class: '%kiboko_enrich.form.type.media_field.class%'
     arguments:
-      - %akeneo_file_storage.model.file_info.class%
+      - '%akeneo_file_storage.model.file_info.class%'
     tags:
       - { name: form.type, alias: kiboko_enrich_media }
