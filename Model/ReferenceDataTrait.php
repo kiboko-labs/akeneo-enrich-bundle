@@ -2,7 +2,6 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
 
-use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyAccess\PropertyAccessorBuilder;
 
 trait ReferenceDataTrait

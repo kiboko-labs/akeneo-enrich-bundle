@@ -2,7 +2,7 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
 
-use Akeneo\Component\Localization\Model\TranslationInterface;
+use Akeneo\Tool\Component\Localization\Model\TranslationInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 

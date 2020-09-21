@@ -2,8 +2,8 @@
 
 namespace Kiboko\Bundle\EnrichBundle\Model;
 
-use Akeneo\Component\FileStorage\Model\FileInfoInterface;
-use Akeneo\Component\Localization\Model\TranslatableInterface;
+use Akeneo\Tool\Component\FileStorage\Model\FileInfoInterface;
+use Akeneo\Tool\Component\Localization\Model\TranslatableInterface;
 use Doctrine\Common\Collections\Collection;
 
 interface PicturedInterface extends TranslatableInterface
