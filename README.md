@@ -8,7 +8,7 @@ https://github.com/akeneo-labs/CustomEntityBundle.
 
 What the project does ?
 -----------------------
-This bundle helps developpers to create more quickly and easily custom reference data for your PIM
+This bundle helps developers to create more quickly and easily custom reference data for your PIM
 and related views in Akeneo.  
 
 Why this project is useful ?
@@ -18,7 +18,7 @@ business needs and specificities.
 
 Need help ?  
 -----------  
-If you need help concerning this bundle you can reach the Kiboko developper team at :
+If you need help concerning this bundle you can reach the Kiboko developer team at :
 hello@kiboko.fr or at +33 (0)471 027 223. We are open from 9am to 12:30pm and from 2pm to 5pm at Paris time.
 
 
